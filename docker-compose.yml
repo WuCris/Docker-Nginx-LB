@@ -2,11 +2,18 @@ version: "3"
 
 services:
   nginx-lb:
-    image: nginx-lb
+    image: nginx-lb:1.25-alpine
     hostname: nginx-lb
     build: nginx
     environment:
-      CACHE_POLICY: enabled
+      CACHE_POLICY: disabled
+      HOST_FRONTEND_1: drupal.example.com
+      HOST_FRONTEND_2: wordpress.example.com
+      HOST_FRONTEND_3: ghost.example.com
+      HOST_BACKEND_1:  drupal-web
+      HOST_BACKEND_2:  wordpress-web
+      HOST_BACKEND_3:  ghost-web
+      ALGORITHM: least_conn
     networks:
       - default
       - nginx-lb
@@ -19,5 +26,4 @@ networks:
   default:
   nginx-lb:
     name: nginx-lb
-    driver:
-      overlay:
+    driver: overlay
