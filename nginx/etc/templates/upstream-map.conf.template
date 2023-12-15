@@ -4,6 +4,4 @@ upstream dynamic$ {
 }
 
 map $host_frontend $host_backend {
-    default no;
-    ${DEFAULT_FRONTEND} ${DEFAULT_BACKEND};
-
+    default ${DEFAULT_BACKEND};

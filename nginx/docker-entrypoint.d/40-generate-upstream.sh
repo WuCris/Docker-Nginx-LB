@@ -12,8 +12,6 @@ backend+=($(env | grep HOST_BACKEND | sed 's/HOST_BACKEND_.=//g'))
 
 COUNTER=0
 
-cp /etc/nginx/templates/upstream-map.conf /etc/nginx/conf.d
-
 for FRONTEND in $(env | grep HOST_FRONTEND); do
 
         echo "    ${frontend[$COUNTER]} ${backend[$COUNTER]};" >> /etc/nginx/conf.d/upstream-map.conf
