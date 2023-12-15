@@ -1,4 +1,4 @@
-version: "3"
+version: "3.9"
 
 services:
   nginx-lb:
@@ -6,24 +6,25 @@ services:
     hostname: nginx-lb
     build: nginx
     environment:
-      CACHE_POLICY: disabled
+      ALGORITHM: least_conn
+      DEFAULT_FRONTEND: drupal.example.com
+      DEFAULT_BACKEND: drupal-web
       HOST_FRONTEND_1: drupal.example.com
       HOST_FRONTEND_2: wordpress.example.com
       HOST_FRONTEND_3: ghost.example.com
       HOST_BACKEND_1:  drupal-web
       HOST_BACKEND_2:  wordpress-web
       HOST_BACKEND_3:  ghost-web
-      ALGORITHM: least_conn
-    networks:
-      - default
-      - nginx-lb
+#    networks:
+#      - default
+#      - nginx-lb
     ports:
       - "80:80"
       - "443:443"
 
 
-networks:
-  default:
-  nginx-lb:
-    name: nginx-lb
-    driver: overlay
+#networks:
+#  default:
+#  nginx-lb:
+#    name: nginx-lb
+#    driver: overlay
