@@ -12,16 +12,13 @@ backend+=($(env | grep HOST_BACKEND | sed 's/HOST_BACKEND_.=//g'))
 
 COUNTER=0
 
-cp /etc/default/templates/upstream-map.conf /etc/nginx/conf.d/upstream-map.conf
-sed 's/ALGORITHM=/$ALGORITHM/g' -i /etc/nginx/conf.d/upstream-map.conf
-
-# find and replace on results
+cp /etc/nginx/templates/upstream-map.conf /etc/nginx/conf.d
 
 for FRONTEND in $(env | grep HOST_FRONTEND); do
 
-        echo -e "\t${frontend[$COUNTER]} ${backend[$COUNTER]};" >> /etc/nginx/conf.d/upsteam-map.conf
+        echo "    ${frontend[$COUNTER]} ${backend[$COUNTER]};" >> /etc/nginx/conf.d/upstream-map.conf
         COUNTER=$((COUNTER+1))
 
 done
 
-echo "}" >> /etc/nginx/conf.d/upsteam-map.conf
+echo "}" >> /etc/nginx/conf.d/upstream-map.conf

@@ -6,6 +6,7 @@ services:
     hostname: nginx-lb
     build: nginx
     environment:
+      NGINX_ENVSUBST_TEMPLATE_DIR: 1
       ALGORITHM: least_conn
       DEFAULT_FRONTEND: drupal.example.com
       DEFAULT_BACKEND: drupal-web
