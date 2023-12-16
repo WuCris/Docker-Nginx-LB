@@ -14,16 +14,16 @@ services:
       HOST_BACKEND_1:  drupal-web
       HOST_BACKEND_2:  wordpress-web
       HOST_BACKEND_3:  ghost-web
-#    networks:
-#      - default
-#      - nginx-lb
+    networks:
+      - default
+      - nginx-lb
     ports:
       - "80:80"
       - "443:443"
 
 
-#networks:
-#  default:
-#  nginx-lb:
-#    name: nginx-lb
-#    driver: overlay
+networks:
+  default:
+  nginx-lb:
+    name: nginx-lb
+    driver: overlay
