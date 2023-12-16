@@ -1,2 +1,4 @@
+resolver 127.0.0.11;
+
 map $request_uri $host_backend {
     default ${DEFAULT_BACKEND};
