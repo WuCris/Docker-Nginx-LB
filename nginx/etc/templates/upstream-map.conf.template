@@ -1,7 +1,2 @@
-upstream dynamic {
-    ${ALGORITHM};
-    server $host_backend:${BACKEND_PORT};
-}
-
 map $request_uri $host_backend {
     default ${DEFAULT_BACKEND};

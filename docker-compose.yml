@@ -6,7 +6,6 @@ services:
     hostname: nginx-lb
     build: nginx
     environment:
-      ALGORITHM: least_conn
       DEFAULT_BACKEND: drupal-web
       HOST_FRONTEND_1: drupal.example.com
       HOST_FRONTEND_2: wordpress.example.com
