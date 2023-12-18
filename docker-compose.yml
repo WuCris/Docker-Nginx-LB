@@ -7,6 +7,7 @@ services:
     hostname: nginx-lb
     build: nginx
     environment:
+      ALGORITHM: least_conn
       NGINX_ENTRYPOINT_LOCAL_RESOLVERS: 1
       DEFAULT_BACKEND: drupal-web:80
       HOST_FRONTEND_1: grav.lan
